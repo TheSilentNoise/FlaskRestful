@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask,jsonify
 from flask_restful import Resource, Api,reqparse
 from flaskext.mysql import MySQL
 from dbase import db
@@ -55,7 +55,7 @@ class GetUser(Resource):
             data = cursor.fetchall()
             print(str(data[0][1]))
 
-            return data
+            return jsonify(data)
 
 class DeleteUser(Resource):
     def delete(self):
@@ -100,4 +100,4 @@ api.add_resource(PutUser,'/PutUser/')
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0',debug=True)
