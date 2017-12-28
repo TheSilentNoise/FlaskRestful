@@ -32,7 +32,7 @@ class CreateUser(Resource):
 
                 conn = mysql.connect()
                 cursor = conn.cursor()
-                query = "INSERT INTO tblUser (UserName, Password) VALUES('" + _userEmail + "','" + _userPassword + "');"
+                query = "INSERT INTO tblUser (UserName, Pwd) VALUES('" + _userEmail + "','" + _userPassword + "');"
                 print(query)
                 cursor.execute(query)
                 conn.commit()
@@ -53,7 +53,7 @@ class GetUser(Resource):
             cursor.execute(query)
            # conn.commit()
             data = cursor.fetchall()
-            print(str(data[0][1]))
+            #print(str(data[0][1]))
 
             return jsonify(data)
 
